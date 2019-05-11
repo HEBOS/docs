@@ -89,7 +89,10 @@ public void ConfigureServices(IServiceCollection services)
         options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
         options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
     })
-    .AddCookie())
+    // Uncomment the following line to use the custom login path, e.g. if your action is listening on "auth/account/login", define it as follows
+    .//AddCookie(options => { options.LoginPath = "/auth/account/login"; }))
+    // Remove the following line if you want to use custom login path
+    .AddCookie()
     .AddOpenIdConnect("Auth0", options => {
         // ...
 
